@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Trend and Forecast</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font with font-display swap for better loading performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Body Styling with Background */
+        body {
+            background-image: url('https://www.extensiv.com/hubfs/Skubana/Blog%20Pages/Imported_Blog_Media/AmazonBoxes-Oct-12-2022-05-46-43-17-PM.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Gradient Overlay for Background Blur */
+        .blur-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)); /* Increased opacity for better contrast */
+            z-index: -1;
+        }
+
+        /* Centering Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            z-index: 1;
+            padding: 0 15px;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 100%;
+        }
+
+        /* Title Styling */
+        h2 {
+            font-weight: bold;
+            font-size: 40px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
+            margin-top: 0;
+        }
+
+        /* Label Styling */
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+            font-size: 22px;
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .form-group label:hover {
+            color: #007bff;
+        }
+
+        /* File Input Styling */
+        .form-control-file {
+            display: block;
+            margin: 0 auto;
+            width: 70%;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .form-control-file:hover {
+            transform: scale(1.03);
+            background-color: #fff;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Styling */
+        .upload-btn {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .upload-btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Centering the Submit Button */
+        .btn-block {
+            display: block;
+            margin: 20px auto 0;
+            width: 60%;
+        }
+
+        /* Centering Form Elements */
+        .form-group {
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 30px;
+            }
+
+            .form-control-file {
+                width: 90%;
+            }
+
+            .upload-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gradient Blur Background -->
+    <div class="blur-container"></div>
+
+    <!-- Form Container -->
+    <div class="container">
+        <section>
+            <h2>Sales Trend and Forecast Analysis</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file" aria-label="Upload CSV File">Upload CSV File</label>
+                            <input type="file" class="form-control-file" name="file" id="file" required aria-required="true">
+                        </div>
+                        <button type="submit" class="btn upload-btn btn-block">Upload and Analyze</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

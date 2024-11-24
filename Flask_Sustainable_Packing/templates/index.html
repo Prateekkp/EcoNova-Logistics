@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packaging Recommendation System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Set the background image */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1633174524827-db00a6b7bc74?q=80&w=1796&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main content container with solid background for visibility */
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95); /* Slightly less transparent for better visibility */
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            margin-top: 100px;
+        }
+
+        /* Main header styling */
+        h1 {
+            font-weight: bold;
+            text-align: center;
+            color: #343a40; /* Dark color for contrast */
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        h3 {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Style the form elements */
+        .form-group label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #343a40; /* Dark color for labels */
+        }
+
+        .form-control {
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+
+        /* Style for the results section */
+        .lead {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #343a40;
+            margin-top: 20px;
+        }
+
+        /* Ensure graphs are responsive and properly sized */
+        .graph-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .graph-container div {
+            text-align: center;
+            width: 48%;
+        }
+
+        .graph-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .graph-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button group for proper alignment */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Ensure space between the buttons */
+            margin-top: 20px;
+        }
+
+        /* Adjust for small screens */
+        @media (max-width: 768px) {
+            .graph-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .graph-container div {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .btn {
+                width: auto;
+            }
+
+            .button-group {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Packaging Recommendation System</h1>
+        
+        <!-- Form to submit product information -->
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" class="form-control" id="product_name" name="product_name" value="{{ request.form['product_name'] if request.method == 'POST' else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" class="form-control" id="weight" name="weight" value="{{ request.form['weight'] if request.method == 'POST' else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="fragility">Fragility</label>
+                <select class="form-control" id="fragility" name="fragility" required>
+                    <option value="Low" {% if request.form['fragility'] == 'Low' %} selected {% endif %}>Low</option>
+                    <option value="Medium" {% if request.form['fragility'] == 'Medium' %} selected {% endif %}>Medium</option>
+                    <option value="High" {% if request.form['fragility'] == 'High' %} selected {% endif %}>High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="max_cost">Max Cost</label>
+                <input type="number" class="form-control" id="max_cost" name="max_cost" value="{{ request.form['max_cost'] if request.method == 'POST' else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="max_carbon">Max Carbon Emission (kg CO2e)</label>
+                <input type="number" class="form-control" id="max_carbon" name="max_carbon" value="{{ request.form['max_carbon'] if request.method == 'POST' else '' }}" required>
+            </div>
+            
+            <!-- Button group for vertical alignment -->
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Get Recommendations</button>
+                <a href="/" class="btn btn-secondary">Check New Item</a>
+            </div>
+        </form>
+
+        <hr>
+
+        {% if result %}
+            <h2 class="my-4" style="color: #343a40;">Recommended Packaging Materials</h2>
+            <p class="lead text-center"><strong>{{ best_material_text }}</strong></p>
+
+            <div class="graph-container">
+                <div>
+                    <h3>Carbon Emission</h3>
+                    <img src="data:image/png;base64,{{ graph_url_carbon }}" alt="Carbon Emission Graph">
+                </div>
+                <div>
+                    <h3>Cost of Packaging</h3>
+                    <img src="data:image/png;base64,{{ graph_url_cost }}" alt="Cost Graph">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Optimizer</title>
+    <style>
+        /* Set background image */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1624984608976-8a7358d25bce?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover; /* Ensure the background image covers the entire page */
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Keep the background image fixed while scrolling */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dark overlay effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+            z-index: -1; /* Place the overlay behind the content */
+        }
+
+        /* Styling for the form container */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Light background to improve readability */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Dynamic width based on viewport */
+            max-width: 400px; /* Ensure the form doesn't stretch too wide */
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            box-sizing: border-box; /* Ensure padding does not affect width */
+        }
+
+        /* Header styling */
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Input field styling */
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box; /* Prevent padding from affecting the width */
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Animation for the form */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add a subtle shadow effect when hovering on form fields */
+        input[type="text"]:hover, input[type="number"]:hover, select:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Route Optimizer</h1>
+        <form method="POST">
+            <label for="start_location">Starting Location:</label>
+            <input type="text" id="start_location" name="start_location" required><br>
+
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" required><br>
+
+            <label for="mileage">Vehicle Mileage (km/l):</label>
+            <input type="number" step="any" id="mileage" name="mileage" required><br>
+
+            <label for="vehicle_type">Vehicle Type (car/truck):</label>
+            <select id="vehicle_type" name="vehicle_type" required>
+                <option value="car">Car</option>
+                <option value="truck">Truck</option>
+            </select><br>
+
+            <input type="submit" value="Calculate">
+        </form>
+    </div>
+</body>
+</html>

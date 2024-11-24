@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Insights</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1494783367193-149034c05e8f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 50px;
+            color: #fff;
+            position: relative;
+            height: 100vh;
+        }
+
+        /* Dark overlay on the background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: -1;
+        }
+
+        h1, h2 {
+            color: #34495e;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: #16a085;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85); /* White background with opacity */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1; /* Ensures it is on top of the dark overlay */
+        }
+
+        .container p {
+            font-size: 16px;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        .container ul {
+            padding-left: 20px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .btn-primary {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .back-btn {
+            margin-top: 15px;
+            background-color: #95a5a6;
+        }
+
+        .back-btn:hover {
+            background-color: #7f8c8d;
+        }
+
+        .heading-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #2980b9;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading-section">Travel Insights</h1>
+        <div class="section-title">Route Information</div>
+        <p><strong>Starting Location:</strong> {{ insights.start_location }}</p>
+        <p><strong>Destination:</strong> {{ insights.destination }}</p>
+
+        <div class="section-title">Fuel Consumption and Carbon Emissions</div>
+        <p><strong>Fuel Consumption:</strong> {{ insights.fuel_consumption }} liters</p>
+        <p><strong>Carbon Emission:</strong> {{ insights.carbon_emission }} kg CO2</p>
+
+        <div class="section-title">Eco-Friendly Tips</div>
+        <p><strong>Fuel Savings (Eco-Friendly Driving):</strong> {{ insights.eco_fuel_savings }} liters</p>
+        <p><strong>Reduced Carbon Emissions (Eco-Friendly):</strong> {{ insights.eco_carbon_savings }} kg CO2</p>
+
+        <div class="section-title">Driving Tips for Better Fuel Efficiency:</div>
+        <ul>
+            <li><strong>Avoid Idling:</strong> Turn off your engine if you expect to be stopped for more than 30 seconds.</li>
+            <li><strong>Maintain Steady Speeds:</strong> Use cruise control to keep a consistent speed.</li>
+            <li><strong>Drive Smoothly:</strong> Avoid rapid acceleration and sudden braking.</li>
+            <li><strong>Keep Tires Properly Inflated:</strong> Ensure your tires are at the recommended pressure.</li>
+            <li><strong>Lighten the Load:</strong> Remove unnecessary heavy items from your car.</li>
+            <li><strong>Reduce Aerodynamic Drag:</strong> Keep windows closed at high speeds and avoid using roof racks unless necessary.</li>
+        </ul>
+
+        <div class="section-title">Map Link</div>
+        <p><a href="{{ google_maps_url }}" class="btn btn-primary" target="_blank">Click here to view your route on Google Maps</a></p>
+
+        <br>
+        <a href="/" class="btn back-btn">Go back to enter new details</a>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
