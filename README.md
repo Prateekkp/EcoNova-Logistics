@@ -1,29 +1,92 @@
-**EcoNova Logistics: AI-Driven Sustainable Shipping Solutions | Amazon Smbhav Hackathon 2024**  
+# EcoNova Logistics  
 
-Welcome to EcoNova Logistics! 🌍  
-This video showcases our innovative project, **EcoNova Logistics**, developed for the **Amazon Smbhav Hackathon 2024**. Our mission is to revolutionize the logistics industry with **AI-driven sustainable solutions** that reduce carbon emissions and streamline supply chains.  
+EcoNova Logistics is a collection of Flask applications designed for various logistics optimizations, including inventory analysis, route optimization, sustainable packaging, and a recycle program.  
 
-### 🚀 **Challenges Solved in Our Prototype:**  
-1. **Sustainable Packaging**:  
-   An intelligent recommendation system that suggests eco-friendly packaging materials based on product size and fragility.  
-2. **Route Optimization**:  
-   A cost-efficient routing solution leveraging free APIs to optimize routes, reduce fuel consumption, and lower carbon emissions.  
-3. **Demand Forecasting & Inventory Management**:  
-   A regression-based model to predict product demand and avoid overstocking or wastage.  
-4. **Recycling Program**:  
-   A simple and user-friendly system to manage returns and encourage recycling practices.  
+## Landing Page  
 
-### 🛠 **Built Using:**  
-- **Flask** for backend development.  
-- **Nomination API** & **OSMR** for route optimization.  
-- **Regression models** for demand forecasting.  
-- **Wix** for showcasing the overall project.  
+Visit our landing page for an overview of the project:  
+[EcoNova Logistics - Landing Page](https://doc110010.wixsite.com/econova-logistics)  
 
-### 🌟 **Key Features:**  
-- User-friendly UI for inputs and data visualization.  
-- Practical and scalable solutions to real-world logistics challenges.  
-- Focus on environmental sustainability through innovative technology.  
+> **Note:** Due to technical constraints, the landing page is currently not connected to the Flask applications.
 
-We believe this prototype can pave the way for greener logistics and efficient supply chain management. Let us know your thoughts in the comments below!  
+## Features  
 
-For inquiries or feedback, contact us at: **prateekkumarprasad15@gmail.com**  
+1. **Inventory Analysis**: Optimize inventory management using Flask-based analytics.  
+2. **Route Optimization**: Enhance logistics efficiency with optimized delivery routes.  
+3. **Sustainable Packaging**: Explore eco-friendly packaging solutions.  
+4. **Recycle Program**: Join our effort for a sustainable future by filling out our quick and easy recycling form [here](https://forms.fillout.com/t/sQvANGX1drus).  
+
+## Project Structure  
+
+```plaintext  
+EcoNova-Logistics/  
+├── Flask_Inventory_Analysis_Improved/  
+│   ├── templates/  
+│   │   ├── index.html  
+│   │   ├── result.html  
+│   ├── app.py  
+├── Flask_Route_optimization/  
+│   ├── templates/  
+│   │   ├── index.html  
+│   │   ├── result.html  
+│   ├── app.py  
+├── Flask_Sustainable_Packaging/  
+    ├── templates/  
+    │   ├── index.html  
+    ├── app.py  
+```  
+
+## Requirements  
+
+Ensure Python 3.8+ is installed on your system.  
+
+### Install Flask  
+
+Run the following command to install Flask:  
+
+```bash  
+pip install flask  
+```  
+
+## How to Run  
+
+1. **Navigate to the Desired Module**:  
+   Use `cd` to enter the specific module's directory:  
+
+   - For **Inventory Analysis**:  
+     ```bash  
+     cd Flask_Inventory_Analysis_Improved  
+     ```  
+
+   - For **Route Optimization**:  
+     ```bash  
+     cd Flask_Route_optimization  
+     ```  
+
+   - For **Sustainable Packaging**:  
+     ```bash  
+     cd Flask_Sustainable_Packaging  
+     ```  
+
+2. **Run the Application**:  
+   Once inside the desired folder, execute the following command:  
+
+   ```bash  
+   python app.py  
+   ```  
+
+3. **Access the Application**:  
+   Open your web browser and go to:  
+
+   ```  
+   http://127.0.0.1:5000  
+   ```  
+
+## Notes  
+
+- Each folder contains its own `app.py` file and corresponding templates.  
+- Modify the `app.py` files if required for customization or debugging.  
+
+## Contributing  
+
+Feel free to fork the repository or submit issues to enhance the project.  
